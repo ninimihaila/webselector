@@ -19,10 +19,18 @@
       h1 {
       	font-size: 14px;
       }
+      button {
+        position: absolute;
+        right: 10px;
+      }
+      li {
+        min-height: 30px;
+        list-style-type: none;
+      }
     </style>
     <script src="popup.js"></script>
   </head>
   <body>
-  	<div><h1>Selected elements</h1></div>
-    <div id="list"></div>
+  	<div><h1 id="title">Selected elements</h1></div>
+    <ul id="list"></ul>
 </html>

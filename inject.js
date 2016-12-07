@@ -14,11 +14,18 @@ document.addEventListener("mousemove", function (e) {
   prevDOM = srcElement;
 }, false);
 
+chrome.storage.local.set({"selected": {}});
+
 document.addEventListener("click", function (e) {
-  chrome.storage.local.get({"selected": []}, function(list) {
+  chrome.storage.local.get({"selected": {}}, function(list) {
     console.log(list);
     list = list["selected"];
-    list.push(e.srcElement.nodeName);
+    var url = document.location.host;
+    if (!list[url]){
+      console.log('no list');
+      list[url] = [];
+    }
+    list[url].push(e.srcElement.nodeName);
     chrome.storage.local.set({"selected": list});
     console.log(list);
   });
