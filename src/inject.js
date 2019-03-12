@@ -1,26 +1,31 @@
 import finder from "@medv/finder"
 
-var hoverClass = "web-selector-ext-mouse-hover";
-var selectedListClass = "web-selector-ext-selected-list";
-var extensionClass = "web-selector-ext-list";
-var listClass = "web-selector-ext-li";
-var removeEntryClass = "web-selector-ext-remove-btn";
+const selectedListClass = "web-selector-ext-selected-list";
+const extensionClass = "web-selector-ext-list";
+const listClass = "web-selector-ext-li";
+const removeEntryClass = "web-selector-ext-remove-btn";
 
-var prev = null;
-var prevStyle = '';
-var selectedList = null;
+let prev = null;
+let prevStyle = {};
+let selectedList = null;
+let hoverStyle = {
+  border: "1px solid blue",
+  background: "#99ffff"
+}
 
 document.addEventListener("mousemove", function (e) {
   var srcElement = e.srcElement;
 
   if (prev != null) {
-    prev.style.border = prevStyle;
+    prev.style = prevStyle;
   }
   if (srcElement.className.indexOf(extensionClass) !== -1) {
     return;
   }
-  prevStyle = srcElement.style.border;
-  srcElement.style.border = "1px solid blue";
+  prevStyle = srcElement.style;
+  for (let prop in hoverStyle) {
+    srcElement.style[prop] = hoverStyle[prop]
+  }
 
   prev = srcElement;
 }, false);
