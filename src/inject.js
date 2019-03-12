@@ -1,3 +1,5 @@
+import finder from "@medv/finder"
+
 var hoverClass = "web-selector-ext-mouse-hover";
 var selectedListClass = "web-selector-ext-selected-list";
 var extensionClass = "web-selector-ext-list";
@@ -5,18 +7,20 @@ var listClass = "web-selector-ext-li";
 var removeEntryClass = "web-selector-ext-remove-btn";
 
 var prev = null;
+var prevStyle = '';
 var selectedList = null;
 
 document.addEventListener("mousemove", function (e) {
   var srcElement = e.srcElement;
 
   if (prev != null) {
-    prev.classList.remove(hoverClass);
+    prev.style.border = prevStyle;
   }
   if (srcElement.className.indexOf(extensionClass) !== -1) {
     return;
   }
-  srcElement.classList.add(hoverClass);
+  prevStyle = srcElement.style.border;
+  srcElement.style.border = "1px solid blue";
 
   prev = srcElement;
 }, false);
@@ -60,6 +64,11 @@ var drawSelectedList = function (list) {
   }
 }
 
+
+var csspath = function (el) {
+  return finder(el)
+}
+
 var xpath = function (el, queryType=5) {
   if (typeof el == "string") return document.evaluate(el, document, null, queryType, null)
   if (!el || el.nodeType != 1) return ''
@@ -84,7 +93,7 @@ document.addEventListener("click", function (e) {
       console.log('no list');
       list[url] = [];
     }
-    list[url].push(xpath(e.srcElement));
+    list[url].push(csspath(e.srcElement));
     chrome.storage.local.set({"selected": list});
     console.log(list);
     drawSelectedList(list[url]);
