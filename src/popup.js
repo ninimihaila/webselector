@@ -28,7 +28,8 @@ function renderList() {
 
 document.addEventListener('DOMContentLoaded', function() {
 	chrome.storage.local.get({"selected": {}}, function(list) {
-		list = list["selected"];
+    list = list["selected"];
+    console.log(list)
     chrome.tabs.query({active:true, lastFocusedWindow:true}, function(tabs){
       var tab = tabs[0];
       list = list[tab.url];

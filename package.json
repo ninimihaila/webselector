@@ -2,17 +2,14 @@
   "name": "webselector",
   "version": "1.0.0",
   "description": "A web extension for selecting elements on the web",
-  "main": "index.js",
   "scripts": {
-    "copy": "rm -rf ./bin && mkdir -p ./bin && cp src/manifest.json bin/manifest.json && cp src/popup.js bin/popup.js && cp src/*.png bin/ && cp src/*.css bin/ && cp src/*.html bin/",
-    "build": "npm run copy && ./node_modules/.bin/rollup -c rollup.config.js"
+    "build": "parcel build src/manifest.json"
   },
   "dependencies": {
     "@medv/finder": "^1.1.1"
   },
   "devDependencies": {
-    "rollup": "^0.56.2",
-    "rollup-plugin-commonjs": "^8.3.0",
-    "rollup-plugin-node-resolve": "^3.0.3"
+    "parcel": "^1.12.1",
+    "parcel-plugin-web-extension": "^1.5.2"
   }
 }
