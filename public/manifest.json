@@ -3,11 +3,11 @@
 
   "name": "Web Selector",
   "description": "This extension helps selecting elements from a page",
-  "version": "1.0",
+  "version": "0.0.1",
 
   "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "popup.html",
+    "default_popup": "selector-popup.html",
     "default_title": "Start web selector"
   },
   "permissions": [
@@ -17,8 +17,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "css": ["inject.css"],
-      "js": ["inject.js"],
+      "js": ["js/selector-content-script.js"],
       "run_at": "document_end",
       "all_frames": true
     }

@@ -1,15 +1,22 @@
 {
   "name": "webselector",
-  "version": "1.0.0",
-  "description": "A web extension for selecting elements on the web",
-  "scripts": {
-    "build": "parcel build src/manifest.json"
-  },
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@medv/finder": "^1.1.1"
+    "@medv/finder": "^1.1.1",
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.11.3",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-scripts-webextension": "0.8.5",
+    "web-ext-types": "^3.1.0"
   },
-  "devDependencies": {
-    "parcel": "^1.12.1",
-    "parcel-plugin-web-extension": "^1.5.2"
+  "scripts": {
+    "start": "react-scripts-web-ext start",
+    "build": "react-scripts-web-ext build",
+    "test": "react-scripts-web-ext test --env=jsdom",
+    "eject": "react-scripts-web-ext eject"
   }
 }
