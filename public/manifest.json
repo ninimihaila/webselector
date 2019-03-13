@@ -5,15 +5,23 @@
   "description": "This extension helps selecting elements from a page",
   "version": "0.0.1",
 
+  "background": {
+    "scripts": [
+      "js/selector-background-script.js"
+    ]
+  },
+
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "selector-popup.html",
     "default_title": "Start web selector"
   },
+
   "permissions": [
     "tabs",
     "storage"
   ],
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

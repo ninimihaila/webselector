@@ -134,4 +134,5 @@ document.addEventListener("click", function (e) {
 
 
 const ourContainer = document.createElement('div');
+document.body.appendChild(ourContainer)
 ReactDOM.render(<Main />, ourContainer);
